@@ -194,8 +194,12 @@ function openWorkout(dayId) {
       <p class="eyebrow">${day.label} • ${day.duration}</p>
       <h2>${day.title}</h2>
       <p>${day.summary}</p>
-      <p><strong>Warm-up:</strong> ${day.warmup}</p>
     </section>
+    <section class="phase-section warmup-section">
+      <div class="phase-heading"><span class="phase-number">1</span><div><p class="eyebrow">WARM-UP • PREPARATION</p><h3>Get ready to move</h3><p>Keep these easy. Warm-up reps do <strong>not</strong> count as workout sets.</p></div></div>
+      <div class="warmup-grid">${day.warmup.map(w => `<article class="warmup-card"><div class="warmup-icon">${exerciseVisual(w.icon)}</div><div><h4>${w.name}</h4><span class="warmup-dose">${w.dose}</span><p>${w.instructions}</p></div></article>`).join('')}</div>
+    </section>
+    <section class="phase-section main-phase"><div class="phase-heading"><span class="phase-number">2</span><div><p class="eyebrow">MAIN WORKOUT • WORKING SETS</p><h3>Strength & control</h3><p>These are the sets to track and check off.</p></div></div></section>
     <section class="exercise-list">
       ${day.exercises.map((e, i) => `
         <article class="exercise-card">
@@ -212,8 +216,7 @@ function openWorkout(dayId) {
         </article>`).join('')}
     </section>
     <section class="tracker">
-      <h3>Finish</h3>
-      <p>${day.finisher}</p>
+      <div class="phase-heading"><span class="phase-number">3</span><div><p class="eyebrow">FINISHER / COOL-DOWN</p><h3>${day.finisherTitle || 'Finish'}</h3><p>${day.finisher}</p></div></div>
       <div class="tracker-grid">
         <label>Pain before (0–10)<input type="number" min="0" max="10" id="painBefore" value="${escapeHtml(ds.painBefore)}"></label>
         <label>Pain after (0–10)<input type="number" min="0" max="10" id="painAfter" value="${escapeHtml(ds.painAfter)}"></label>

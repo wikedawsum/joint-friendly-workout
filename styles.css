@@ -231,3 +231,20 @@ footer { max-width:1180px; margin:0 auto; padding:0 20px 35px; color:#768492; fo
   .pose-label { font-size:.65rem; }
   .visual-arrow { font-size:1.05rem; }
 }
+
+/* Workout phases */
+.phase-section { margin: 18px 0; }
+.phase-heading { display:flex; gap:14px; align-items:flex-start; padding:16px 18px; border:1px solid var(--border); border-radius:16px; background:rgba(255,255,255,.025); }
+.phase-heading h3 { margin:2px 0 4px; }
+.phase-heading p { margin:0; }
+.phase-number { flex:0 0 34px; width:34px; height:34px; border-radius:50%; display:grid; place-items:center; font-weight:800; background:var(--accent); color:#07130e; }
+.warmup-section .phase-heading { border-left:4px solid #e5a94b; }
+.main-phase .phase-heading { border-left:4px solid var(--accent); }
+.tracker .phase-heading { border-left:4px solid #68a7ff; margin-bottom:16px; }
+.warmup-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(245px,1fr)); gap:10px; margin-top:10px; }
+.warmup-card { display:grid; grid-template-columns:100px 1fr; gap:12px; align-items:center; padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--card); }
+.warmup-card .exercise-visual { transform:scale(.72); transform-origin:center; width:138px; margin-left:-20px; margin-right:-18px; }
+.warmup-card h4 { margin:0 0 3px; font-size:1rem; }
+.warmup-card p { margin:5px 0 0; font-size:.88rem; color:var(--muted); line-height:1.35; }
+.warmup-dose { display:inline-block; font-size:.78rem; font-weight:800; color:var(--accent); }
+@media (max-width:620px){ .warmup-grid{grid-template-columns:1fr}.warmup-card{grid-template-columns:84px 1fr}.warmup-card .exercise-visual{transform:scale(.62);margin-left:-28px;margin-right:-26px}.phase-heading{padding:14px}.phase-number{flex-basis:30px;width:30px;height:30px} }
