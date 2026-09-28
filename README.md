@@ -55,3 +55,14 @@ Checkmarks, pain ratings, difficulty, and notes are saved with browser `localSto
 ## Medical note
 
 This project is educational and is not medical advice. Exercises should be adjusted or stopped when they cause sharp joint pain, increasing swelling, or worsening/radiating nerve symptoms. People with severe joint disease, planned joint replacement, or persistent sciatica should follow guidance from their physician or physical therapist when available.
+
+## Local tracking
+
+The site now stores separate data for Person A and Person B in each browser using `localStorage`. Each profile can save:
+
+- Week 1 completion, pain scores, difficulty and notes
+- Dated weight entries
+- A local weight trend chart
+- Export/import backups as JSON
+
+No server or database is required. Data does not automatically sync between devices or browsers.
