@@ -11,3 +11,6 @@ A four-week, five-day-per-week joint-friendly workout site for two profiles, wit
 The exercise guide now uses matched photographic movement images where a trustworthy photo asset is available. It deliberately shows a written form-guide placeholder rather than a misleading generic image when no matched photo is available.
 
 All personal tracking remains in browser localStorage; there is no server or account backend.
+
+## Per-exercise feedback
+Each working exercise now saves separate Effort (Too Easy / About Right / Challenging / Too Hard), Comfort (Good / Mild Discomfort / Painful), optional weight used, and an optional exercise note for each person, week, and day. The overall daily workout rating remains available separately.

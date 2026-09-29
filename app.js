@@ -61,8 +61,9 @@ function dayState(id) {
   const weekState = currentWeekState();
   weekState[id] ||= {
     checks: {}, complete: false, completedAt: '',
-    painBefore: '', painAfter: '', difficulty: '', notes: ''
+    painBefore: '', painAfter: '', difficulty: '', notes: '', exerciseRatings: {}
   };
+  weekState[id].exerciseRatings ||= {};
   return weekState[id];
 }
 
@@ -181,6 +182,27 @@ function openWorkout(dayId) {
             <div><h3>${e.name}</h3><div class="exercise-meta">${e.dose}</div></div>
             <label class="check-wrap"><input type="checkbox" data-check="${i}" ${ds.checks[i] ? 'checked' : ''}><span>Done</span></label>
           </div>
+          <div class="exercise-feedback" data-exercise-feedback="${i}">
+            <div class="feedback-title"><strong>Rate this exercise</strong><span>Saved for ${profileLabel(profile)}</span></div>
+            <label>Effort
+              <select data-exercise-field="effort" data-exercise-index="${i}">
+                <option value="">Choose</option>
+                ${['Too Easy','About Right','Challenging','Too Hard'].map(v => `<option value="${v}" ${(ds.exerciseRatings?.[i]?.effort || '') === v ? 'selected' : ''}>${v}</option>`).join('')}
+              </select>
+            </label>
+            <label>Comfort
+              <select data-exercise-field="comfort" data-exercise-index="${i}">
+                <option value="">Choose</option>
+                ${['Good','Mild Discomfort','Painful'].map(v => `<option value="${v}" ${(ds.exerciseRatings?.[i]?.comfort || '') === v ? 'selected' : ''}>${v}</option>`).join('')}
+              </select>
+            </label>
+            <label>Weight used <span class="optional">(optional)</span>
+              <input type="text" inputmode="decimal" data-exercise-field="weight" data-exercise-index="${i}" value="${escapeHtml(ds.exerciseRatings?.[i]?.weight || '')}" placeholder="e.g. 10 lb or bodyweight">
+            </label>
+            <label class="feedback-note">Exercise note <span class="optional">(optional)</span>
+              <input type="text" data-exercise-field="note" data-exercise-index="${i}" value="${escapeHtml(ds.exerciseRatings?.[i]?.note || '')}" placeholder="e.g. right knee felt tight; use higher chair">
+            </label>
+          </div>
           <details open>
             <summary>How to do it</summary>
             <p>${e.instructions}</p>
@@ -193,7 +215,7 @@ function openWorkout(dayId) {
       <div class="tracker-grid">
         <label>Pain before (0–10)<input type="number" min="0" max="10" id="painBefore" value="${escapeHtml(ds.painBefore)}"></label>
         <label>Pain after (0–10)<input type="number" min="0" max="10" id="painAfter" value="${escapeHtml(ds.painAfter)}"></label>
-        <label>How did this feel?<select id="difficulty"><option value="">Choose</option><option ${['Too Easy','Easy'].includes(ds.difficulty)?'selected':''}>Too Easy</option><option ${['About Right','Moderate'].includes(ds.difficulty)?'selected':''}>About Right</option><option ${['Challenging','Hard'].includes(ds.difficulty)?'selected':''}>Challenging</option><option ${ds.difficulty==='Painful'?'selected':''}>Painful</option></select></label>
+        <label>Overall workout effort<select id="difficulty"><option value="">Choose</option><option ${['Too Easy','Easy'].includes(ds.difficulty)?'selected':''}>Too Easy</option><option ${['About Right','Moderate'].includes(ds.difficulty)?'selected':''}>About Right</option><option ${['Challenging','Hard'].includes(ds.difficulty)?'selected':''}>Challenging</option><option ${ds.difficulty==='Painful'?'selected':''}>Painful</option></select></label>
         <label class="wide">Notes<textarea id="notes" placeholder="What felt good? What should be modified next time?">${escapeHtml(ds.notes || '')}</textarea></label>
       </div>
       <button id="completeDay" class="primary-btn complete-day">${ds.complete ? '✓ Day completed' : 'Mark day complete'}</button>
@@ -203,6 +225,17 @@ function openWorkout(dayId) {
     ds.checks[e.target.dataset.check] = e.target.checked;
     saveState();
   }));
+  workoutContent.querySelectorAll('[data-exercise-field]').forEach(control => {
+    const saveExerciseFeedback = e => {
+      const i = e.target.dataset.exerciseIndex;
+      const field = e.target.dataset.exerciseField;
+      ds.exerciseRatings ||= {};
+      ds.exerciseRatings[i] ||= {};
+      ds.exerciseRatings[i][field] = e.target.value;
+      saveState();
+    };
+    control.addEventListener(control.tagName === 'SELECT' ? 'change' : 'input', saveExerciseFeedback);
+  });
   ['painBefore','painAfter','difficulty','notes'].forEach(id => {
     document.getElementById(id).addEventListener('input', e => {
       ds[id] = e.target.value;
