@@ -1,4 +1,5 @@
-const week = window.WORKOUT_WEEKS[1];
+let activeWeek = Number(localStorage.getItem('jfw-active-week')) || 1;
+let week = window.WORKOUT_WEEKS[activeWeek] || window.WORKOUT_WEEKS[1];
 const dayGrid = document.getElementById('dayGrid');
 const dialog = document.getElementById('workoutDialog');
 const workoutContent = document.getElementById('workoutContent');
@@ -17,7 +18,7 @@ if (!PROFILE_INFO[activeProfile]) activeProfile = 'a';
 profileSelect.value = activeProfile;
 
 function defaultProfileState() {
-  return { weeks: { 1: {} }, weights: [] };
+  return { weeks: { 1: {}, 2: {}, 3: {}, 4: {} }, weights: [] };
 }
 
 function loadState() {
@@ -42,8 +43,8 @@ function loadState() {
 function ensureProfile(profile = activeProfile) {
   state.profiles ||= {};
   state.profiles[profile] ||= defaultProfileState();
-  state.profiles[profile].weeks ||= { 1: {} };
-  state.profiles[profile].weeks[1] ||= {};
+  state.profiles[profile].weeks ||= {};
+  for (let w=1; w<=4; w++) state.profiles[profile].weeks[w] ||= {};
   state.profiles[profile].weights ||= [];
   return state.profiles[profile];
 }
@@ -53,7 +54,7 @@ function saveState() {
 }
 
 function currentWeekState() {
-  return ensureProfile().weeks[1];
+  return ensureProfile().weeks[activeWeek];
 }
 
 function dayState(id) {
@@ -152,37 +153,9 @@ const POSES = {
 };
 
 function exerciseVisual(type) {
-  const neutral = POSES.stand;
-  const configs = {
-    'sit-stand': [POSES.sit, POSES.stand, 'chair', 'chair', 'Sit tall', 'Stand tall'],
-    'side-leg': [neutral, POSES.sideOut, 'counter', 'counter', 'Start', 'Lift to side'],
-    'ham-curl': [neutral, POSES.hamCurl, 'counter', 'counter', 'Start', 'Curl heel'],
-    'calf': [neutral, POSES.calfUp, 'counter', 'counter', 'Heels down', 'Rise up'],
-    'brace': [neutral, neutral, '', '', 'Relaxed', 'Brace gently'],
-    'wall-push': [POSES.wallStart, POSES.wallLean, 'wall', 'wall', 'Start', 'Lower'],
-    'row': [POSES.rowStart, POSES.rowPull, 'counter', 'counter', 'Reach', 'Pull elbow'],
-    'curl': [POSES.curlDown, POSES.curlUp, '', '', 'Arms down', 'Curl up'],
-    'press': [POSES.wallStart, POSES.wallLean, 'wall', 'wall', 'Set shoulders', 'Press away'],
-    'march': [neutral, POSES.march, 'counter', 'counter', 'Stand tall', 'Small lift'],
-    'glute': [POSES.bridgeLow, POSES.bridgeHigh, 'floor', 'floor', 'Hips down', 'Squeeze up'],
-    'heel-slide': [POSES.heelBent, POSES.heelSlide, 'floor', 'floor', 'Knee bent', 'Slide heel'],
-    'ankle': [neutral, POSES.calfUp, '', '', 'Flex', 'Point'],
-    'breathing': [neutral, neutral, '', '', 'Breathe in', 'Breathe out'],
-    'walk': [POSES.walk1, POSES.walk2, '', '', 'Easy stride', 'Keep moving'],
-    'balance': [neutral, POSES.shift, 'counter', 'counter', 'Centered', 'Shift gently'],
-    'shoulder': [neutral, neutral, '', '', 'Relax', 'Roll shoulders']
-  };
-  const [p1,p2,s1,s2,l1,l2] = configs[type] || configs.brace;
-  const extra1 = type === 'brace' ? '<div class="visual-core-ring"></div>' : '';
-  const extra2 = type === 'brace' ? '<div class="visual-core-ring active"></div>' : '';
-  const breath1 = type === 'breathing' ? '<span class="breath-ring breath-in">IN</span>' : '';
-  const breath2 = type === 'breathing' ? '<span class="breath-ring breath-out">OUT</span>' : '';
-  const shoulderArrow = type === 'shoulder' ? '<span class="motion-arrow">↻</span>' : '';
-  return `<div class="exercise-visual" aria-label="Movement guide">
-    <div class="pose-panel"><span class="pose-label">${l1}</span><div class="pose-canvas">${poseFigure(p1,s1)}${extra1}${breath1}${shoulderArrow}</div></div>
-    <div class="visual-arrow" aria-hidden="true">→</div>
-    <div class="pose-panel"><span class="pose-label">${l2}</span><div class="pose-canvas">${poseFigure(p2,s2)}${extra2}${breath2}${shoulderArrow}</div></div>
-  </div>`;
+  const src = window.EXERCISE_IMAGES?.[type];
+  if (!src) return `<div class="photo-unavailable"><span>Form guide</span><small>Follow the written steps below</small></div>`;
+  return `<img class="exercise-photo" src="${src}" alt="Photo demonstration for this movement" loading="lazy">`;
 }
 
 function openWorkout(dayId) {
@@ -220,7 +193,7 @@ function openWorkout(dayId) {
       <div class="tracker-grid">
         <label>Pain before (0–10)<input type="number" min="0" max="10" id="painBefore" value="${escapeHtml(ds.painBefore)}"></label>
         <label>Pain after (0–10)<input type="number" min="0" max="10" id="painAfter" value="${escapeHtml(ds.painAfter)}"></label>
-        <label>Difficulty<select id="difficulty"><option value="">Choose</option><option ${ds.difficulty==='Easy'?'selected':''}>Easy</option><option ${ds.difficulty==='Moderate'?'selected':''}>Moderate</option><option ${ds.difficulty==='Hard'?'selected':''}>Hard</option></select></label>
+        <label>How did this feel?<select id="difficulty"><option value="">Choose</option><option ${['Too Easy','Easy'].includes(ds.difficulty)?'selected':''}>Too Easy</option><option ${['About Right','Moderate'].includes(ds.difficulty)?'selected':''}>About Right</option><option ${['Challenging','Hard'].includes(ds.difficulty)?'selected':''}>Challenging</option><option ${ds.difficulty==='Painful'?'selected':''}>Painful</option></select></label>
         <label class="wide">Notes<textarea id="notes" placeholder="What felt good? What should be modified next time?">${escapeHtml(ds.notes || '')}</textarea></label>
       </div>
       <button id="completeDay" class="primary-btn complete-day">${ds.complete ? '✓ Day completed' : 'Mark day complete'}</button>
@@ -253,6 +226,8 @@ function updateProgress() {
   const pct = Math.round(completed / week.days.length * 100);
   document.getElementById('progressFill').style.width = `${pct}%`;
   document.getElementById('progressText').textContent = `${pct}% complete • ${completed}/${week.days.length} days`;
+  const h=document.querySelector('.progress-panel h2'); if(h) h.textContent=`Week ${activeWeek} Progress`;
+  const rb=document.getElementById('resetProgress'); if(rb) rb.textContent=`Reset Week ${activeWeek} progress`;
   document.getElementById('progressProfileText').textContent = `Progress for ${PROFILE_INFO[activeProfile].name} is stored on this device.`;
 }
 
@@ -419,13 +394,23 @@ function switchProfile(profile) {
   renderTracking();
 }
 
+function switchWeek(num) {
+  activeWeek = Number(num); week = window.WORKOUT_WEEKS[activeWeek];
+  localStorage.setItem('jfw-active-week', String(activeWeek));
+  document.querySelectorAll('.week-tab').forEach(b=>b.classList.toggle('active', Number(b.dataset.week)===activeWeek));
+  const intro=document.querySelector('.intro-card h2'); if(intro) intro.textContent=week.title;
+  const introP=document.querySelector('.intro-card p'); if(introP) introP.innerHTML=`${week.subtitle}. Aim for about <strong>${week.effort}</strong> effort while keeping symptoms calm and form controlled.`;
+  dayGrid.setAttribute('aria-label', `Week ${activeWeek} workout days`);
+  if(dialog.open) dialog.close(); renderDayGrid(); renderTracking();
+}
+document.querySelectorAll('.week-tab').forEach(b=>b.addEventListener('click',()=>switchWeek(b.dataset.week)));
 document.getElementById('closeDialog').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
 profileSelect.addEventListener('change', e => switchProfile(e.target.value));
 
 document.getElementById('resetProgress').addEventListener('click', () => {
-  if (confirm(`Reset all Week 1 checkmarks, pain scores, difficulty ratings, and notes for ${profileLabel()} on this device?`)) {
-    ensureProfile().weeks[1] = {};
+  if (confirm(`Reset all Week ${activeWeek} checkmarks, pain scores, difficulty ratings, and notes for ${profileLabel()} on this device?`)) {
+    ensureProfile().weeks[activeWeek] = {};
     saveState();
     renderDayGrid();
     renderWorkoutHistory();
@@ -463,5 +448,5 @@ document.getElementById('importData').addEventListener('change', e => {
 });
 
 document.getElementById('weightDate').value = todayLocalISO();
-renderDayGrid();
+switchWeek(activeWeek);
 renderTracking();

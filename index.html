@@ -28,8 +28,10 @@
   <main class="layout">
     <section class="panel intro-card">
       <div>
-        <h2>Week 1: Baseline &amp; Comfort</h2>
-        <p>This first week is about learning which movements feel good, not pushing to exhaustion. Keep effort around <strong>4–6/10</strong> and finish most sets feeling like you could do a few more clean reps.</p>
+        <p class="eyebrow" id="weekEyebrow">4-week progressive plan</p>
+        <h2 id="weekTitle">Week 1 — Baseline &amp; Comfort</h2>
+        <p id="weekIntro">Learn the movements, find comfortable ranges, and finish most sets feeling like you could do a few more clean reps.</p>
+        <div class="week-effort">Target effort: <strong id="weekEffort">4–6/10</strong></div>
       </div>
       <div class="safety-box">
         <strong>Stop or modify an exercise</strong> if it causes sharp joint pain, increasing swelling, or nerve symptoms that spread farther down the leg. Seek medical care promptly for new severe weakness, bowel/bladder changes, or saddle-area numbness.
@@ -37,25 +39,25 @@
     </section>
 
     <nav class="week-nav panel" aria-label="Workout week navigation">
-      <button class="week-tab active" data-week="1">Week 1</button>
-      <button class="week-tab locked" disabled title="Ready for future plans">Week 2</button>
-      <button class="week-tab locked" disabled>Week 3</button>
-      <button class="week-tab locked" disabled>Week 4</button>
+      <button class="week-tab active" data-week="1"><span>Week 1</span><small>Baseline</small></button>
+      <button class="week-tab" data-week="2"><span>Week 2</span><small>Build</small></button>
+      <button class="week-tab" data-week="3"><span>Week 3</span><small>Progress</small></button>
+      <button class="week-tab" data-week="4"><span>Week 4</span><small>Stronger</small></button>
     </nav>
 
-    <section class="day-grid" id="dayGrid" aria-label="Week 1 workout days"></section>
+    <section class="day-grid" id="dayGrid" aria-label="Workout days"></section>
 
     <section class="panel progress-panel">
       <div>
         <p class="eyebrow">Active profile</p>
-        <h2>Week 1 Progress</h2>
+        <h2 id="progressWeekTitle">Week 1 Progress</h2>
         <p id="progressProfileText">Progress for Person A is stored on this device.</p>
       </div>
       <div class="progress-wrap" aria-label="Workout completion progress">
         <div class="progress-bar"><span id="progressFill"></span></div>
         <strong id="progressText">0% complete</strong>
       </div>
-      <button id="resetProgress" class="secondary-btn">Reset Week 1 progress</button>
+      <button id="resetProgress" class="secondary-btn">Reset current week progress</button>
     </section>
 
     <section class="panel tracking-panel" id="tracking">
@@ -110,7 +112,7 @@
           <div class="section-heading">
             <div>
               <h3>Workout History</h3>
-              <p>Your completed Week 1 workouts and recorded pain/difficulty.</p>
+              <p id="historyWeekText">Your completed workouts and recorded pain/effort feedback for the selected week.</p>
             </div>
           </div>
           <div id="workoutHistory" class="workout-history"></div>

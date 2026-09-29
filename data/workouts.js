@@ -1,101 +1,52 @@
-window.WORKOUT_WEEKS = {
-  1: {
-    title: "Week 1 — Baseline & Comfort",
-    days: [
-      {
-        id:"day1", label:"Day 1", title:"Lower Body + Core", duration:"30–40 min",
-        focus:["Lower body","Core","Treadmill"], summary:"Gentle leg and hip strength with a short walk.",
-        warmup:[
-          warm("walk","Easy Treadmill Walk","4–5 min","0% incline. Comfortable pace; this is just to get warm."),
-          warm("shoulder","Shoulder Rolls","8 each way","Slow, relaxed circles forward and backward."),
-          warm("balance","Supported Weight Shifts","8 / side","Hold support and gently shift weight side to side. Keep both feet down."),
-          warm("march","Gentle Supported March","30–45 sec","Low knee height. Hold support; make the movement tiny if needed."),
-          warm("sit-stand","Sit-to-Stand Practice","3–5 reps","Easy practice reps only. These do not count toward your working sets.")
-        ],
-        exercises:[
-          ex("sit-stand","Sit-to-Stand","2 × 8","Use a firm, relatively high chair. Lean forward slightly, stand tall, then sit back down slowly.","Use a comfortable chair height and stop if symptoms radiate farther down the leg.","Raise the seat with a firm cushion and use chair arms or a counter. Shorten the range if the knee or hip hurts."),
-          ex("side-leg","Supported Side Leg Raise","2 × 10 / side","Hold a counter or chair. Keep your trunk tall and move one leg gently to the side without leaning.","Keep the movement small and avoid side-bending through the low back.","Keep the standing knee soft. Move only as far as the hip tolerates."),
-          ex("ham-curl","Standing Hamstring Curl","2 × 10 / side","Hold support and slowly bend one knee, bringing the heel back only as far as comfortable.","Stay upright and avoid arching your back.","Use a small, pain-free knee bend. Stop if the knee pinches or catches."),
-          ex("wall-push","Wall Push-Up","2 × 10","Hands on the wall at chest height. Lower your chest toward the wall, then press away.","Keep your ribs stacked and avoid letting the low back sag.","Stand close enough to the wall that the position feels stable and comfortable."),
-          ex("row","Supported Row","2 × 10 / side","Person A may use a light dumbbell. Support one hand on a counter and pull the other elbow back. Person B can use no weight or a water bottle.","Keep the torso only slightly hinged and choose a position that does not increase leg symptoms.","Use a tall stance and support yourself well. A water bottle is optional."),
-          ex("calf","Standing Calf Raise","2 × 12","Hold support, rise onto the balls of your feet, pause, then lower slowly.","Keep your torso stacked and avoid leaning forward.","Hold support and use a smaller range if the knee or hip feels unstable."),
-          ex("brace","Standing Core Brace","5 × 5 sec","Gently tighten your abdomen as if preparing for a light poke. Keep breathing normally.","Use only a mild brace—do not force your spine into a position that increases symptoms.","Do this standing with support or seated if standing is uncomfortable.")
-        ],
-        finisherTitle:"Cool-Down Walk", finisher:"5–10 minutes easy treadmill walking at 0% incline. Break it into shorter bouts if needed."
-      },
-      {
-        id:"day2", label:"Day 2", title:"Upper Body + Walking", duration:"30–40 min",
-        focus:["Upper body","Posture","Treadmill"], summary:"Low-impact upper-body work plus comfortable cardio.",
-        warmup:[
-          warm("walk","Easy Treadmill Walk","4–5 min","0% incline at a comfortable pace."),
-          warm("shoulder","Shoulder Rolls","8 each way","Relax the neck and make slow circles."),
-          warm("brace","Gentle Posture Reset","5 breaths","Stand or sit tall, relax the shoulders, and breathe normally."),
-          warm("wall-push","Wall Push-Up Practice","3–5 reps","Easy practice reps only; stop well before fatigue.")
-        ],
-        exercises:[
-          ex("wall-push","Wall Push-Up","2 × 10","Hands on the wall at chest height. Lower your chest toward the wall, then press away.","Keep your ribs stacked and avoid letting the low back sag.","Stand close enough to the wall that the position feels stable and comfortable."),
-          ex("row","Supported Row","2 × 10 / side","Person A may use a light dumbbell. Support one hand on a counter and pull the other elbow back. Person B can use no weight or a water bottle.","Keep the torso only slightly hinged and choose a position that does not increase leg symptoms.","Use a tall stance and support yourself well. A water bottle is optional."),
-          ex("curl","Biceps Curl","2 × 10","Person A may use light dumbbells. Person B can use water bottles or no weight. Move slowly.","Stay tall and avoid leaning backward.","Perform seated if standing bothers the knee or hip."),
-          ex("press","Wall Scapular Press","2 × 10","Place forearms on the wall. Gently press away so your shoulder blades glide apart, then relax them back.","Keep the movement in the shoulder blades rather than the low back.","Use a comfortable stance and keep weight evenly distributed."),
-          ex("march","Supported March","2 × 8 / side","Hold a counter and lift one foot a few inches, alternating sides.","Keep lifts low. Stop if marching increases radiating symptoms.","Keep the lift very small and use strong hand support. Substitute seated marching if needed.")
-        ],
-        finisherTitle:"Walking Finisher", finisher:"10–15 minutes treadmill walking at an easy conversational pace, 0% incline."
-      },
-      {
-        id:"day3", label:"Day 3", title:"Glutes + Mobility", duration:"25–35 min",
-        focus:["Glutes","Mobility","Recovery"], summary:"Hip-supporting strength with a lighter training day.",
-        warmup:[
-          warm("walk","Easy Treadmill Walk","4–5 min","0% incline. Keep this deliberately easy."),
-          warm("ankle","Ankle Pumps","10","Point and flex the feet gently while seated or standing with support."),
-          warm("balance","Supported Weight Shifts","6 / side","Small side-to-side shifts to loosen up without deep bending."),
-          warm("breathing","Easy Breathing","3 slow breaths","Relax your shoulders and avoid forcing any stretch.")
-        ],
-        exercises:[
-          ex("glute","Glute Bridge or Standing Glute Squeeze","2 × 8–10","Bridge option: lie on your back with knees bent, squeeze the glutes and lift the hips a comfortable amount. Standing option: squeeze the glutes for 2–3 seconds.","Use the standing version if bridging increases sciatic symptoms.","Use the standing version if getting to the floor is difficult or the knee/hip dislikes the bridge position."),
-          ex("side-leg","Supported Side Leg Raise","2 × 10 / side","Hold support and move the leg out to the side with a tall torso.","Keep range small and avoid low-back side bending.","Keep the standing knee soft; reduce the range if the hip is irritated."),
-          ex("heel-slide","Heel Slide Core Control","2 × 6 / side","Lie on your back with knees bent. Gently brace, slide one heel away, then return it. Alternate sides.","Make the slide shorter if symptoms increase. Substitute a standing brace if lying down is uncomfortable.","Use a short slide. Substitute seated abdominal bracing if the hip or knee position is uncomfortable."),
-          ex("ankle","Ankle Pumps","2 × 15","Seated or lying down, slowly point and flex the feet through a comfortable range.","Use this as gentle movement; no aggressive stretching.","Great as a low-load circulation and mobility drill. Keep it pain-free."),
-          ex("breathing","90-Second Recovery Breathing","1 round","Sit or lie comfortably. Breathe slowly and let your shoulders relax.","Choose the position that feels best for your back and leg.","Choose a position that lets the hip and knee relax without strain.")
-        ],
-        finisherTitle:"Optional Recovery Walk", finisher:"Optional 5–10 minute easy treadmill walk if both joints and nerve symptoms feel calm."
-      },
-      {
-        id:"day4", label:"Day 4", title:"Full Body Strength", duration:"30–40 min",
-        focus:["Full body","Strength","Treadmill"], summary:"Repeat safe patterns and build confidence with controlled reps.",
-        warmup:[
-          warm("walk","Easy Treadmill Walk","4–5 min","0% incline at an easy pace."),
-          warm("shoulder","Shoulder Rolls","8 each way","Slow circles with a relaxed neck."),
-          warm("balance","Supported Weight Shifts","8 / side","Gently shift side to side while holding support."),
-          warm("sit-stand","Sit-to-Stand Practice","3–5 reps","Use a high chair. These are easy practice reps, not working sets.")
-        ],
-        exercises:[
-          ex("sit-stand","Sit-to-Stand","2 × 8","Stand from a firm chair and lower slowly. Use hands if needed.","Keep the range comfortable and stop if symptoms spread farther down the leg.","Use a higher seat and arm support. Depth is optional; pain-free control is the goal."),
-          ex("wall-push","Wall Push-Up","2 × 10","Press smoothly away from the wall, keeping the body in one comfortable line.","Avoid excessive low-back arching.","Use a stance that feels stable for the knee and hip."),
-          ex("row","Supported Row","2 × 10 / side","Person A may use a light dumbbell. Person B can use no weight or a water bottle.","Support yourself and keep the hinge shallow.","Stay tall and well supported; seated row motion is fine if needed."),
-          ex("calf","Standing Calf Raise","2 × 12","Rise, pause, and lower slowly while holding support.","Keep your trunk tall.","Use strong hand support and a comfortable range."),
-          ex("brace","Core Brace","5 × 5 sec","Gently tighten the abdomen while breathing normally.","No forced spinal flattening or aggressive bracing.","Perform seated if standing is tiring or uncomfortable.")
-        ],
-        finisherTitle:"Cool-Down Walk", finisher:"5–10 minutes easy treadmill walking at 0% incline."
-      },
-      {
-        id:"day5", label:"Day 5", title:"Walking + Gentle Conditioning", duration:"25–40 min",
-        focus:["Cardio","Balance","Easy conditioning"], summary:"Finish the week with low-impact movement and no need to chase intensity.",
-        warmup:[
-          warm("walk","Very Easy Treadmill Walk","5 min","0% incline. Start slower than your main walking pace."),
-          warm("shoulder","Shoulder Rolls","8 each way","Keep the neck and jaw relaxed."),
-          warm("ankle","Ankle Pumps","10","Gentle point-and-flex movement before the longer walk."),
-          warm("balance","Supported Weight Shifts","6 / side","Small, comfortable shifts with both feet staying on the floor.")
-        ],
-        exercises:[
-          ex("walk","Treadmill Walk","15–25 min total","Walk at a pace where you can still speak in full sentences. Break into 5–10 minute bouts if needed.","Shorten the walk or take breaks if leg symptoms intensify or travel farther down the leg.","Keep speed modest and incline at 0%. Stop if knee pain or swelling climbs during the session."),
-          ex("balance","Supported Weight Shift","2 × 8 / side","Hold a counter and gently shift more weight onto one foot, then back to center. Keep both feet on the floor.","Stay upright and use a very small shift.","Do not force weight onto the painful side. Use both hands for support and keep the range tiny."),
-          ex("calf","Standing Calf Raise","2 × 10","Hold support and perform slow, comfortable calf raises.","Keep posture tall.","Use a small range and strong hand support."),
-          ex("shoulder","Shoulder Rolls","10 each direction","Slowly roll the shoulders forward and backward.","Keep the rest of your body relaxed.","Can be done seated if preferred.")
-        ],
-        finisherTitle:"Cool-Down", finisher:"2 minutes of comfortable seated or standing breathing. Week 1 should leave you feeling like you could have done more—not wiped out."
-      }
-    ]
-  }
-};
+const IMG = 'assets/exercises/';
 function ex(icon,name,dose,instructions,modA,modB){ return {icon,name,dose,instructions,modA,modB}; }
 function warm(icon,name,dose,instructions){ return {icon,name,dose,instructions}; }
+const common = {
+  warm: [warm('walk','Easy Treadmill Walk','4–5 min','0% incline. Comfortable pace; this is preparation, not a working set.'),warm('shoulder','Shoulder Rolls','8 each way','Slow, relaxed circles forward and backward.'),warm('balance','Supported Weight Shifts','8 / side','Hold a chair or counter and gently shift side to side.'),warm('march','Gentle Supported March','30–45 sec','Low knee height. Hold support and keep the movement comfortable.')],
+  sts:(dose='2 × 8')=>ex('sit-stand','Sit-to-Stand',dose,'Use a firm chair. Lean forward slightly, stand tall, then lower with control.','Use a comfortable range; stop if nerve symptoms travel farther down the leg. Add a light dumbbell only when bodyweight feels easy and symptoms stay calm.','Use a higher chair and hands/armrests as needed. Keep the range comfortable for the knee and hip.'),
+  side:(dose='2 × 10 / side')=>ex('side-leg','Standing Hip Abduction',dose,'Hold support, stay tall, and move one leg gently to the side without leaning.','Keep the range small enough that the low back stays quiet.','Keep the standing knee soft and use a pain-free range.'),
+  ham:(dose='2 × 10 / side')=>ex('ham-curl','Standing Hamstring Curl',dose,'Hold support and slowly curl the heel back; lower with control.','Stay upright and avoid arching the low back.','Use a small pain-free knee bend; stop for pinching or catching.'),
+  push:(dose='2 × 10')=>ex('wall-push','Wall or Counter Push-Up',dose,'Keep the body in a comfortable straight line, lower toward the wall/counter, then press away.','Progress from wall to sturdy counter only when the wall version is easy and the back stays comfortable.','Use the wall or a high counter and a stable stance.'),
+  row:(dose='2 × 10 / side')=>ex('row','Supported Row',dose,'Support one hand on a counter or chair and pull the other elbow toward your hip.','Use a dumbbell if comfortable; keep the hinge shallow and stop if leg symptoms increase.','Use no weight, a water bottle, or light resistance; stay well supported.'),
+  calf:(dose='2 × 12')=>ex('calf','Standing Calf Raise',dose,'Hold support, rise onto the balls of the feet, pause, and lower slowly.','Stay tall and controlled.','Use strong hand support and a comfortable range.'),
+  brace:(dose='5 × 5 sec')=>ex('brace','Standing Core Brace',dose,'Gently tighten the abdomen as if preparing for a light poke while breathing normally.','Use a mild brace; do not force the spine flat.','Do this standing with support or seated if preferred.'),
+  march:(dose='2 × 8 / side')=>ex('march','Supported March',dose,'Hold support and alternate low, controlled knee lifts.','Keep lifts low and stop if radiating symptoms increase.','Use tiny lifts or seated marching if needed.'),
+  balance:(dose='2 × 8 / side')=>ex('balance','Supported Weight Shift',dose,'Hold support and gently shift more weight toward one foot, then return to center.','Stay upright and keep the shift small.','Keep both feet down; never force weight onto a painful side.'),
+  walk:(dose='15–25 min')=>ex('walk','Treadmill Walk',dose,'Walk at a conversational pace. Use 0% incline unless a small incline is already known to be comfortable.','Reduce pace or duration if nerve symptoms intensify or travel farther down the leg.','Keep incline at 0% and stop if knee pain or swelling rises.'),
+};
+function day(id,label,title,duration,focus,summary,warmup,exercises,finisherTitle,finisher){return {id,label,title,duration,focus,summary,warmup,exercises,finisherTitle,finisher};}
+const w1=[
+ day('day1','Day 1','Lower Body + Core','30–40 min',['Lower body','Core','Treadmill'],'Gentle leg and hip strength with a short walk',[...common.warm,warm('sit-stand','Sit-to-Stand Practice','3–5 reps','Easy practice only; these do not count toward working sets.')],[common.sts(),common.side(),common.ham(),common.push(),common.row(),common.calf(),common.brace()],'Cool-Down Walk','5–10 minutes easy treadmill walking at 0% incline.'),
+ day('day2','Day 2','Upper Body + Walking','30–40 min',['Upper body','Posture','Treadmill'],'Low-impact upper-body work plus comfortable cardio',common.warm.slice(0,3),[common.push(),common.row(),common.march(),common.brace(),common.calf('2 × 10')],'Walking Finisher','10–15 minutes easy treadmill walking at 0% incline.'),
+ day('day3','Day 3','Glutes + Mobility','25–35 min',['Hips','Core','Recovery'],'A lighter hip-support and movement-quality day',common.warm,[common.side(),common.ham(),common.balance(),common.brace(),common.calf('2 × 10')],'Optional Recovery Walk','5–10 minutes easy walking if joints and nerve symptoms feel calm.'),
+ day('day4','Day 4','Full Body Strength','30–40 min',['Full body','Strength','Treadmill'],'Repeat safe patterns and build confidence',common.warm,[common.sts(),common.push(),common.row(),common.side(),common.calf(),common.brace()],'Cool-Down Walk','5–10 minutes easy treadmill walking at 0% incline.'),
+ day('day5','Day 5','Walking + Conditioning','25–40 min',['Cardio','Balance','Conditioning'],'Low-impact conditioning without chasing intensity',common.warm.slice(0,3),[common.walk(),common.balance(),common.calf('2 × 10'),common.brace()],'Cool-Down','2–5 minutes very easy walking and relaxed breathing.')
+];
+const w2=[
+ day('day1','Day 1','Full Body Strength A','35–45 min',['Full body','Strength','Treadmill'],'Add a little volume while keeping clean form',common.warm,[common.sts('2–3 × 10'),common.side('2–3 × 10 / side'),common.ham('2–3 × 10 / side'),common.push('2–3 × 10'),common.row('2–3 × 10 / side'),common.calf('2–3 × 12'),common.brace('5 × 6–8 sec')],'Treadmill Finisher','10–12 minutes easy-to-moderate walking.'),
+ day('day2','Day 2','Cardio + Core','30–40 min',['Cardio','Core','Mobility'],'Longer walking with short controlled pickups',common.warm.slice(0,3),[common.walk('18–22 min: 3 min easy + 1 min brisk'),common.brace('6 × 6–8 sec'),common.march('2 × 10 / side'),common.balance('2 × 8 / side')],'Cool-Down','3–5 minutes very easy walking.'),
+ day('day3','Day 3','Full Body Strength B','35–45 min',['Full body','Posture','Core'],'A second strength day with controlled volume',common.warm,[common.sts('2–3 × 10'),common.push('2–3 × 10'),common.row('2–3 × 10 / side'),common.ham('2–3 × 10 / side'),common.calf('2–3 × 12'),common.brace('5 × 6–8 sec')],'Optional Walk','8–10 minutes easy walking.'),
+ day('day4','Day 4','Cardio + Balance','30–40 min',['Cardio','Balance','Control'],'Build endurance and steadiness',common.warm.slice(0,3),[common.walk('20–25 min'),common.balance('3 × 8 / side'),common.march('2 × 10 / side'),common.calf('2 × 12')],'Cool-Down','3–5 minutes easy walking.'),
+ day('day5','Day 5','Full Body Circuit','35–45 min',['Circuit','Full body','Conditioning'],'Two controlled rounds with short rests',common.warm,[common.sts('2 rounds × 10'),common.push('2 rounds × 10'),common.side('2 rounds × 10 / side'),common.row('2 rounds × 10 / side'),common.calf('2 rounds × 12'),common.brace('2 rounds × 6 sec')],'Treadmill Finisher','10 minutes comfortable walking.')
+];
+const w3=[
+ day('day1','Day 1','Full Body Strength A','40–50 min',['Full body','Strength','Treadmill'],'Three working sets and a modest endurance increase',common.warm,[common.sts('3 × 10–12'),common.side('3 × 12 / side'),common.ham('3 × 12 / side'),common.push('3 × 10–12'),common.row('3 × 10–12 / side'),common.calf('3 × 15'),common.brace('5 × 8–10 sec')],'Treadmill Finisher','10–12 minutes at about 5–6/10 effort.'),
+ day('day2','Day 2','Cardio + Core','35–45 min',['Cardio','Core','Intervals'],'Gentle intervals raise the challenge without impact',common.warm.slice(0,3),[common.walk('20–25 min: 3 min comfortable + 1 min brisk'),common.brace('6 × 8–10 sec'),common.march('3 × 30 sec'),common.balance('3 × 8 / side')],'Cool-Down','3–5 minutes very easy walking.'),
+ day('day3','Day 3','Full Body Strength B','40–50 min',['Full body','Strength','Core'],'Another three-set strength session with controlled tempo',common.warm,[common.sts('3 × 10–12'),common.push('3 × 10–12'),common.row('3 × 10–12 / side'),common.ham('3 × 12 / side'),common.march('3 × 30 sec'),common.calf('3 × 15'),common.brace('5 × 8–10 sec')],'Optional Walk','8–12 minutes easy walking.'),
+ day('day4','Day 4','Cardio + Balance','35–45 min',['Cardio','Balance','Control'],'Longer walking plus supported balance practice',common.warm.slice(0,3),[common.walk('25 min'),common.balance('3 × 10 / side'),common.march('3 × 30 sec'),common.calf('3 × 12')],'Cool-Down','3–5 minutes easy walking.'),
+ day('day5','Day 5','Full Body Circuit','40–50 min',['Circuit','Full body','Conditioning'],'Three rounds create more cardiovascular demand without impact',common.warm,[common.sts('3 rounds × 10'),common.push('3 rounds × 10'),common.side('3 rounds × 10 / side'),common.row('3 rounds × 10 / side'),common.calf('3 rounds × 12'),common.brace('3 rounds × 8 sec')],'Treadmill Finisher','10–15 minutes comfortable walking.')
+];
+const w4=[
+ day('day1','Day 1','Full Body Strength A','40–50 min',['Strength','Tempo','Full body'],'Keep three sets and make the reps slower and more deliberate',common.warm,[common.sts('3 × 12–15 • 3-sec lower'),common.side('3 × 15 / side • 2-sec pause'),common.ham('3 × 12–15 / side'),common.push('3 × 12–15'),common.row('3 × 12–15 / side'),common.calf('3 × 15 • 2-sec pause'),common.brace('5 × 10 sec')],'Treadmill Finisher','12–15 minutes at about 5–6/10 effort.'),
+ day('day2','Day 2','Cardio + Core','40–50 min',['Cardio','Core','Intervals'],'More total walking while keeping the faster bouts controlled',common.warm.slice(0,3),[common.walk('25–30 min: 3 min comfortable + 1 min brisk'),common.brace('6 × 10 sec'),common.march('3 × 40 sec'),common.balance('3 × 10 / side')],'Cool-Down','5 minutes very easy walking.'),
+ day('day3','Day 3','Full Body Strength B','40–50 min',['Strength','Control','Full body'],'Progress through tempo or resistance—not joint pain',common.warm,[common.sts('3 × 12 • slow lower'),common.push('3 × 12–15'),common.row('3 × 12–15 / side'),common.ham('3 × 15 / side'),common.march('3 × 40 sec'),common.calf('3 × 15 • pause'),common.brace('5 × 10 sec')],'Optional Walk','10–12 minutes easy walking.'),
+ day('day4','Day 4','Cardio + Balance','40–50 min',['Cardio','Balance','Endurance'],'The longest steady movement day of the block',common.warm.slice(0,3),[common.walk('25–35 min'),common.balance('3 × 12 / side'),common.march('3 × 40 sec'),common.calf('3 × 15')],'Cool-Down','5 minutes easy walking.'),
+ day('day5','Day 5','Full Body Circuit','40–50 min',['Circuit','Full body','Conditioning'],'Three quality rounds with slightly shorter rests',common.warm,[common.sts('3 rounds × 12'),common.push('3 rounds × 12'),common.side('3 rounds × 12 / side'),common.row('3 rounds × 12 / side'),common.calf('3 rounds × 15'),common.brace('3 rounds × 10 sec')],'Treadmill Finisher','12–15 minutes comfortable walking.')
+];
+window.WORKOUT_WEEKS={
+ 1:{title:'Week 1 — Foundation',subtitle:'Baseline & Comfort',effort:'4–6/10',days:w1},
+ 2:{title:'Week 2 — Build',subtitle:'More volume, same clean movement',effort:'5–6/10',days:w2},
+ 3:{title:'Week 3 — Progress',subtitle:'Three-set strength and longer cardio',effort:'5–7/10',days:w3},
+ 4:{title:'Week 4 — Stronger',subtitle:'Slower tempo, more reps, longer endurance',effort:'6–7/10',days:w4}
+};
+window.EXERCISE_IMAGES={walk:IMG+'walk.webp',shoulder:IMG+'shoulder.webp',balance:IMG+'balance.webp',march:IMG+'march.webp','sit-stand':IMG+'sit-stand.webp','side-leg':IMG+'side-leg.webp','ham-curl':IMG+'ham-curl.webp','wall-push':IMG+'wall-push.webp',row:IMG+'row.webp',calf:IMG+'calf.webp',brace:IMG+'brace.webp'};
