@@ -18,3 +18,6 @@ Each working exercise now saves separate Effort (Too Easy / About Right / Challe
 
 ## Programming update
 From Week 1 Day 3 onward, sessions have been recalibrated upward: mostly three working sets, longer low-impact conditioning, progressive resistance/tempo, and 40–55 minute target sessions. Per-exercise effort and comfort tracking remains enabled.
+
+## Programming revision: varied training split
+Starting with Week 1 Day 3, the program now uses distinct training-day purposes rather than repeating the same exercise list. Strength A emphasizes sit-to-stand/push/lateral-hip work; Strength B emphasizes glute bridges, rows, biceps curls, seated knee extensions, hip extension and hamstring work; cardio days emphasize treadmill/core/stability; Day 5 is a mixed conditioning circuit. Week 1 Days 1-2 remain unchanged.
