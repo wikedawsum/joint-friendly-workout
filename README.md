@@ -14,3 +14,7 @@ All personal tracking remains in browser localStorage; there is no server or acc
 
 ## Per-exercise feedback
 Each working exercise now saves separate Effort (Too Easy / About Right / Challenging / Too Hard), Comfort (Good / Mild Discomfort / Painful), optional weight used, and an optional exercise note for each person, week, and day. The overall daily workout rating remains available separately.
+
+
+## Programming update
+From Week 1 Day 3 onward, sessions have been recalibrated upward: mostly three working sets, longer low-impact conditioning, progressive resistance/tempo, and 40–55 minute target sessions. Per-exercise effort and comfort tracking remains enabled.
